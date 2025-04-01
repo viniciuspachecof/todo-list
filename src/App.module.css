@@ -1,0 +1,38 @@
+.formTarefas {
+  display: flex;
+  justify-content: center;
+  margin-top: calc(0px - 1.5rem - 6px); 
+}
+
+.formTarefas input {
+  width: 39.875rem;
+  height: 3.375rem;  
+  border: 1px solid var(--gray-700);
+  border-radius: 7px;
+  background: var(--gray-500);
+  padding: 1rem;    
+  color: var(--white);
+}
+
+.formTarefas button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.25rem;
+  width: 5.625rem;
+  border-radius: 7px;
+  background: var(--blue-dark);
+  border: 0;
+  color: var(--white);
+  margin-left: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.formTarefas button span {
+  margin-right: 5px;
+}
+
+.formTarefas button:hover {
+  background: var(--blue);
+  transition: background-color 0.1s;  
+}
