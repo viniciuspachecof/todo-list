@@ -1,0 +1,30 @@
+.conteudoTarefa {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--gray-500);
+  border: 1px solid var(--gray-400);
+  border-radius: 5px;
+  padding: 1rem 1rem;
+  margin-bottom: 0.875rem;
+}
+
+.conteudoTarefa p.tarefaMarcada {
+  text-decoration: line-through;
+  color: var(--gray-300);
+}
+
+.conteudoTarefa .checkbox {
+  margin-right: 1rem;
+}
+
+.conteudoTarefa .excluir {
+  margin-left: 1rem;
+  flex-shrink: 0;
+}
+
+.conteudoTarefa p {
+  color: var(--white);
+  font-size: 0.875rem;
+  font-weight: 200;
+}
