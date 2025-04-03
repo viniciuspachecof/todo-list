@@ -46,6 +46,7 @@
 .tarefas .registrosTarefas {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 1.5rem;
 }
 
 .tarefas .textoTarefas {
@@ -86,7 +87,6 @@
   align-items: center;
   justify-content: center;
   height: 15.25rem;
-  margin-top: 1.5rem;
   line-height: 22px;
   border-top: 1px solid var(--gray-400)
 }
