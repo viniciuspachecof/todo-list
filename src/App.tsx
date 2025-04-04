@@ -9,24 +9,45 @@ import { Header } from './components/Header';
 import { Tarefa } from './components/Tarefa';
 import { ChangeEvent, FormEvent, useState } from 'react';
 
-function App() {
-  const [tarefa, setTarefa] = useState('');
-  const [tarefas, setTarefas] = useState<string[]>([]);
+export interface ITarefas {
+  selecionado: boolean;
+  descricao: string;
+}
 
-  function onChangeTarefas(event: ChangeEvent<HTMLInputElement>) {
-    setTarefa(event.target.value);
+function App() {
+  const [descricaoTarefa, setDescricaoTarefa] = useState('');
+
+  const [tarefas, setTarefas] = useState<ITarefas[]>([]);
+
+  function onChangeSelecionarTarefa(descricao: string) {    
+    const tarefaSelecionada = tarefas.find((tarefa) => tarefa.descricao === descricao);
+
+    if (tarefaSelecionada) {
+      tarefaSelecionada.selecionado = !tarefaSelecionada.selecionado;
+    }
+
+    setTarefas([...tarefas]);
+  }
+
+  function onChangeDescricaoTarefa(event: ChangeEvent<HTMLInputElement>) {
+    setDescricaoTarefa(event.target.value);
   }
 
   function handleFormTarefas(event: FormEvent) {
     event.preventDefault();
 
+    const tarefa = {
+      selecionado: false,
+      descricao: descricaoTarefa
+    }
+
     setTarefas([...tarefas, tarefa]);
 
-    setTarefa('');
+    setDescricaoTarefa('');
   }
 
-  function handleDeletarTarefa(tarefaDeletada: string) {
-    const listaTarefas = tarefas.filter((tarefa) => tarefa !== tarefaDeletada);
+  function handleDeletarTarefa(descricao: string) {
+    const listaTarefas = tarefas.filter((tarefa) => tarefa.descricao !== descricao);
 
     setTarefas(listaTarefas);
   }
@@ -47,12 +68,14 @@ function App() {
     <>
       <Header />
 
+      <div className={styles.wrapper}>
       <form className={styles.formTarefas} onSubmit={handleFormTarefas}>
         <input
-          onChange={onChangeTarefas}
+          onChange={onChangeDescricaoTarefa}
           type="text"
           placeholder="Adicione uma nova tarefa"
-          value={tarefa}
+          value={descricaoTarefa}
+          required
         />
         <button>
           <span>Criar</span>
@@ -63,10 +86,10 @@ function App() {
       <div className={styles.tarefas}>
         <div className={styles.registrosTarefas}>
           <p className={styles.textoTarefas}>
-            Tarefas criadas <span>0</span>
+            Tarefas criadas <span>{tarefas.length}</span>
           </p>
           <p className={styles.textoConcluidos}>
-            Concluídas <span>0</span>
+            Concluídas <span>{tarefas.length ? `${tarefas.filter((item) => item.selecionado).length} de ${tarefas.length}` : tarefas.length}</span>
           </p>
         </div>        
 
@@ -74,9 +97,10 @@ function App() {
           {exibirMensagemTarefasVazio()}
 
           {tarefas.map((tarefa, index) => (
-            <Tarefa key={index} content={tarefa} onDeletarTarefa={handleDeletarTarefa}/>
+            <Tarefa key={index} {...tarefa} onDeletarTarefa={handleDeletarTarefa} onSelecionarTarefa={onChangeSelecionarTarefa}/>
           ))}
         </div>
+      </div>
       </div>
     </>
   );

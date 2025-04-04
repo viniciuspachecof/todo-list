@@ -4,7 +4,7 @@
   align-items: center;
   background: var(--gray-500);
   border: 1px solid var(--gray-400);
-  border-radius: 5px;
+  border-radius: 0.313rem;
   padding: 1rem 1rem;
   margin-bottom: 0.875rem;
 }

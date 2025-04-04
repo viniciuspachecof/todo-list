@@ -1,3 +1,9 @@
+.wrapper {
+  padding: 0 1rem;
+  margin: 0 auto;
+  max-width: 48rem;
+}
+
 .formTarefas {
   display: flex;
   justify-content: center;
@@ -8,7 +14,7 @@
   width: 39.875rem;
   height: 3.375rem;
   border: 1px solid var(--gray-700);
-  border-radius: 7px;
+  border-radius: 0.438rem;
   background: var(--gray-500);
   padding: 1rem;
   color: var(--white);
@@ -20,7 +26,8 @@
   justify-content: center;
   height: 3.25rem;
   width: 5.625rem;
-  border-radius: 7px;
+  padding: 0.313rem;
+  border-radius: 0.438rem;
   background: var(--blue-dark);
   border: 0;
   color: var(--white);
@@ -38,8 +45,6 @@
 }
 
 .tarefas {
-  width: 46rem;
-  margin: auto;  
   margin-top: 4.0625rem;
 }
 
@@ -59,7 +64,7 @@
   color: var(--white);
   background: var(--gray-400);
   padding: 0.125rem 0.563rem;
-  border-radius: 45%;
+  border-radius: 1.25rem;
   margin-left: 5px;
   font-weight: normal;
   font-size: 0.75rem;
@@ -75,7 +80,7 @@
   color: var(--white);
   background: var(--gray-400);
   padding: 0.125rem 0.563rem;
-  border-radius: 45%;
+  border-radius: 1.25rem;
   margin-left: 5px;  
   font-weight: normal;
   font-size: 0.75rem;
